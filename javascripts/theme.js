@@ -78,7 +78,7 @@
   }
   $(document).ready(addLogo)
 
-  $(window).load(function() {
+  $(window).on("load",function() {
     $( "#quick-search form" ).css('margin-right', $( "#s2id_project_quick_jump_box" ).width() + 60);
     $( 'input[name$="q"]' ).attr( 'placeholder','Enter Search Text' );
     if (activeStaticSidebar) {
@@ -89,7 +89,7 @@
       $( "#top-menu" ).css( "transition", "none" );
       $( "#quick-search" ).css( "transition", "none" );
     }
-  })
+  });
   $( document ).on( "click", "#main, #header", function() {
     $( "#top-menu" ).removeClass( "open" );
     $( ".menu-push-toright" ).removeClass( "menu-push-toright" );
