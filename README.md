@@ -1,4 +1,4 @@
-# Flatly light redmine theme #
+# Flatly light redmine theme Modern #
 Modern and readability theme for Redmine.
 
 Updated to support jQuery3 used by latest version of Redmine.
