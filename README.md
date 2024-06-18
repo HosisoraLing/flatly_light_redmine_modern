@@ -1,6 +1,6 @@
 # Flatly light redmine theme #
 Modern and readability theme for Redmine.
-Updated to support jQuery3 used by high version Redmine.
+Updated to support jQuery3 used by latest version of Redmine.
 ## Installation
 
 * Download and unzip theme into your Redmine themes directory (e.g. ` ../public/themes/`)
