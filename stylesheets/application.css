@@ -41,13 +41,12 @@ input:focus {
   background: #FFF;
   border-bottom: 4px solid #47a3da;
   color: #999;
-  width: 215px;
+  width: 240px;
   height: 100%;
   top: 0;
   z-index: 100;
   position: fixed;
-  left: 0px;
-  transition: none;
+  left: -240px;
   text-transform: uppercase;
   border-right: 2px solid #eeeff3;
   padding: 0;
@@ -185,7 +184,7 @@ label[for="q"]{
   line-height: 28px;
   /*opacity: 0;*/
   -webkit-transition: opacity 0.8s;
-  transition: opacity 0.0s;
+  transition: opacity 0.s;
 }
 
 #project-jump.drdn {
