@@ -2,7 +2,7 @@
 
   'use strict';
   /* set true to enable static sidebar */
-  var activeStaticSidebar = false
+  var activeStaticSidebar = true
 
   function classReg( className ) {
     return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
@@ -82,8 +82,8 @@
     $( "#quick-search form" ).css('margin-right', $( "#s2id_project_quick_jump_box" ).width() + 60);
     $( 'input[name$="q"]' ).attr( 'placeholder','Enter Search Text' );
     if (activeStaticSidebar) {
-      $("#header").css( "margin-left", "215px" );
-      $("#content").css( "margin-left", "215px" );
+      $( "#header").css("margin-left", "215px");
+      $( "#content").css("margin-left", "215px");
       $( "#wrapper3" ).css( "margin-left", "215px" );
       $( "#quick-search" ).css( "left", "200px" );
       $( "#top-menu" ).css( "left", "0" );
@@ -91,7 +91,7 @@
       $( "#top-menu" ).css( "transition", "none" );
       $( "#quick-search" ).css( "transition", "none" );
     }
-  });
+  })
   $( document ).on( "click", "#main, #header", function() {
     $( "#top-menu" ).removeClass( "open" );
     $( ".menu-push-toright" ).removeClass( "menu-push-toright" );
