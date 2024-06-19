@@ -127,7 +127,6 @@ label[for="q"]{
 }
 
 #header{
-  left: 215px;
   padding-left: 80px;
   padding-top: 80px;
   background-color: #fefefe;
@@ -156,8 +155,6 @@ label[for="q"]{
   border: 2px solid #eeeff3;
   border-top: none;
   right: 0;
-  left: 200px;
-  transition: none;
   border-right: 0;
 
   background-color: rgba(255, 255, 255, 0.9);
@@ -279,7 +276,6 @@ label[for="q"]{
 }
 
 #content{
-  left: 215px;
   width: 81%;
   background-color: #ebf1f5;
   padding-left: 20px;
