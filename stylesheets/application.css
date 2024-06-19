@@ -127,7 +127,7 @@ label[for="q"]{
 }
 
 #header{
-  margin-left: 215px;
+  left: 215px;
   padding-left: 80px;
   padding-top: 80px;
   background-color: #fefefe;
@@ -279,7 +279,7 @@ label[for="q"]{
 }
 
 #content{
-  margin-left: 215px;
+  left: 215px;
   width: 81%;
   background-color: #ebf1f5;
   padding-left: 20px;
