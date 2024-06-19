@@ -83,11 +83,7 @@
     $( 'input[name$="q"]' ).attr( 'placeholder','Enter Search Text' );
     if (activeStaticSidebar) {
       $( "#wrapper3" ).css( "margin-left", "215px" );
-      // $( "#quick-search" ).css( "left", "200px" );
-      // $( "#top-menu" ).css( "left", "0" );
-      // $( "#top-menu" ).css( "width", "215px" );
-      // $( "#top-menu" ).css( "transition", "none" );
-      // $( "#quick-search" ).css( "transition", "none" );
+
     }
   });
   $( document ).on( "click", "#main, #header", function() {
