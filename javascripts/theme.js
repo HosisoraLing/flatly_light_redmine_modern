@@ -82,8 +82,8 @@
     $( "#quick-search form" ).css('margin-right', $( "#s2id_project_quick_jump_box" ).width() + 60);
     $( 'input[name$="q"]' ).attr( 'placeholder','Enter Search Text' );
     var pathname=window.location.pathname.split('/');
-    if(pathname.includes("attachments")){
-      $( "#h1").css("display", "none");
+    if(pathname.includes("projects")){
+      $( "#header").css("display", "none");
     }
     if (activeStaticSidebar) {
       $( "#header").css("margin-left", "215px");
