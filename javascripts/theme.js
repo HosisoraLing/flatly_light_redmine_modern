@@ -91,6 +91,7 @@
       window.location.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
     }
     var pathname=window.location.pathname.split('/');
+    console.log(pathname)
     if(pathname.includes("attachments")){
       $( "#header").css("display", "none");
     }
