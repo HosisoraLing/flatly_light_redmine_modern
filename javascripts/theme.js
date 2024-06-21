@@ -86,12 +86,13 @@
     // 修改href属性
     homeLink.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
     var url=window.location.href;
+    console.log(url);
     if (url==="http://mx.yinhe596.cn:40880/"){
       window.location.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
     }
 
     var pathname=window.location.pathname.split('/');
-    console.log(pathname);
+
     if(pathname.includes("attachments")){
       $( "#header").css("display", "none");
     }
@@ -101,7 +102,6 @@
       $( "#content").css("margin-left", "215px");
       $( "#wrapper3" ).css( "margin-left", "215px" );
       $( "#quick-search" ).css( "left", "200px" );
-      $( "#top-menu" ).css( "left", "0" );
       $( "#top-menu" ).css( "width", "215px" );
       $( "#top-menu" ).css( "transition", "none" );
       $( "#quick-search" ).css( "transition", "none" );
