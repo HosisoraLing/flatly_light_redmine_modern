@@ -86,18 +86,18 @@
     var homeLink = document.querySelector('a.home');
     // 修改href属性
     homeLink.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-
-    var weburl=window.location.href;
-    if (weburl === "http://mx.yinhe596.cn:40880/"){
-      window.location.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-    }
-
-    var pathname=window.location.pathname.split('/');
-
-    if(pathname.includes("attachments")){
-      $( "#header").css("display", "none");
-    }
- 
+    //
+    // var weburl=window.location.href;
+    // if (weburl === "http://mx.yinhe596.cn:40880/"){
+    //   window.location.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
+    // }
+    //
+    // var pathname=window.location.pathname.split('/');
+    //
+    // if(pathname.includes("attachments")){
+    //   $( "#header").css("display", "none");
+    // }
+    //
     if (activeStaticSidebar) {
       $( "#header").css("margin-left", "215px");
       $( "#content").css("margin-left", "215px");
