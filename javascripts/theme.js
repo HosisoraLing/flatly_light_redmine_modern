@@ -3,6 +3,7 @@
   'use strict';
   /* set true to enable static sidebar */
   var activeStaticSidebar = true
+
   function classReg( className ) {
     return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
   }
@@ -80,28 +81,12 @@
   $(window).on("load",function() {
     $( "#quick-search form" ).css('margin-right', $( "#s2id_project_quick_jump_box" ).width() + 60);
     $( 'input[name$="q"]' ).attr( 'placeholder','Enter Search Text' );
-
-    // 选择class为"home"的<a>元素
-    var homeLink = document.querySelector('a.home');
-    // 修改href属性
-    homeLink.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-
-    var weburl=window.location.href;
-    if (weburl === "http://mx.yinhe596.cn:40880/"){
-      window.location.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-    }
-
-    var pathname=window.location.pathname.split('/');
-
-    if(pathname.includes("attachments")){
-      $( "#header").css("display", "none");
-    }
-
     if (activeStaticSidebar) {
-      $( "#header").css("margin-left", "215px");
-      $( "#content").css("margin-left", "215px");
+      $( "#content" ).css( "margin-left", "215px" );
+      $( "#header" ).css( "margin-left", "215px" );
       $( "#wrapper3" ).css( "margin-left", "215px" );
       $( "#quick-search" ).css( "left", "200px" );
+      $( "#top-menu" ).css( "left", "0" );
       $( "#top-menu" ).css( "width", "215px" );
       $( "#top-menu" ).css( "transition", "none" );
       $( "#quick-search" ).css( "transition", "none" );
