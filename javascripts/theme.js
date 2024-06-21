@@ -84,6 +84,7 @@
     // 选择class为"home"的<a>元素
     var homeLink = document.querySelector('a.home');
     // 修改href属性
+    
     homeLink.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
 
     var weburl=window.location.href;
