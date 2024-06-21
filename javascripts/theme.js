@@ -94,9 +94,7 @@
     if(pathname.includes("attachments")){
       $( "#header").css("display", "none");
     }
-    // if(pathname.includes("onlyoffice")){
-    //   $( "#header").css("display", "none");
-    // }
+ 
     if (activeStaticSidebar) {
       $( "#header").css("margin-left", "215px");
       $( "#content").css("margin-left", "215px");
