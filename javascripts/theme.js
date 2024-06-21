@@ -82,14 +82,15 @@
     $( "#quick-search form" ).css('margin-right', $( "#s2id_project_quick_jump_box" ).width() + 60);
     $( 'input[name$="q"]' ).attr( 'placeholder','Enter Search Text' );
     
-   // 选择class为"home"的<a>元素
-   var homeLink = document.querySelector('a.home');
-   // 修改href属性
+    // 选择class为"home"的<a>元素
+    var homeLink = document.querySelector('a.home');
+    // 修改href属性
     homeLink.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-    // var url=window.location.href;
-    // if (url=="http://mx.yinhe596.cn:40880/"){
-    //   window.location.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-    // }
+    var url=window.location.href;
+    if (url==="http://mx.yinhe596.cn:40880/"){
+      window.location.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
+    }
+
     var pathname=window.location.pathname.split('/');
     console.log(pathname);
     if(pathname.includes("attachments")){
