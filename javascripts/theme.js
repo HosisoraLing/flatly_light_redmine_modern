@@ -85,10 +85,10 @@
     var homeLink = document.querySelector('a.home');
     // 修改href属性
     homeLink.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-    var url=window.location.href;
-    if (url === "http://mx.yinhe596.cn:40880/"){
-      window.location.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-    }
+    // var url=window.location.href;
+    // if (url === "http://mx.yinhe596.cn:40880/"){
+    //   window.location.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
+    // }
 
     var pathname=window.location.pathname.split('/');
 
