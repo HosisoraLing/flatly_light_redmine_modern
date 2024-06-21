@@ -3,7 +3,6 @@
   'use strict';
   /* set true to enable static sidebar */
   var activeStaticSidebar = true
-
   function classReg( className ) {
     return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
   }
@@ -54,10 +53,10 @@
   function addElements (){
     $( '<div id="menu"><div class="burger"><div class="one"></div><div class="two"></div><div class="three"></div></div><div class="circle"></div></div>' ).insertBefore( $( "#top-menu" ) );
     var menuLeft = document.getElementById( 'top-menu' ),
-    showLeft = document.getElementById( 'menu' ),
-    body = document.body,
-    search = document.getElementById( 'quick-search' ),
-    menuButton = document.getElementById( 'menu' );
+        showLeft = document.getElementById( 'menu' ),
+        body = document.body,
+        search = document.getElementById( 'quick-search' ),
+        menuButton = document.getElementById( 'menu' );
 
     showLeft.onclick = function() {
       classie.toggle( this, 'active' );
@@ -97,7 +96,7 @@
     if(pathname.includes("attachments")){
       $( "#header").css("display", "none");
     }
- 
+
     if (activeStaticSidebar) {
       $( "#header").css("margin-left", "215px");
       $( "#content").css("margin-left", "215px");
@@ -122,32 +121,32 @@
   };
 
   function removeRule() {
-      if(typeof window.CSSMediaRule !== "function")
-          return false; //Your browser doesn't support media query feature
+    if(typeof window.CSSMediaRule !== "function")
+      return false; //Your browser doesn't support media query feature
 
-      var s = document.styleSheets, r,
-          i, j, k;
+    var s = document.styleSheets, r,
+        i, j, k;
 
-      if(!s) return false; //no style sheets found
+    if(!s) return false; //no style sheets found
 
-      // walk throuth css sheets
-      for(i=0; i<s.length; i++) {
-          // get all rules
-          r = s[i].cssRules;
-          if(!r) continue;
+    // walk throuth css sheets
+    for(i=0; i<s.length; i++) {
+      // get all rules
+      r = s[i].cssRules;
+      if(!r) continue;
 
-          for(j=0; j<r.length; j++) {
-              //If there's a rule for media query
-              if(r[j] instanceof CSSMediaRule &&
-                      r[j].media.mediaText == "screen and (max-width: 899px)") {
-                  for(k=0; k<r[j].cssRules.length; k++) {
-                      // remove all rules of it
-                      r[j].deleteRule(r[j].cssRules[k]);
-                  }
-                  return true;
-              }
+      for(j=0; j<r.length; j++) {
+        //If there's a rule for media query
+        if(r[j] instanceof CSSMediaRule &&
+            r[j].media.mediaText == "screen and (max-width: 899px)") {
+          for(k=0; k<r[j].cssRules.length; k++) {
+            // remove all rules of it
+            r[j].deleteRule(r[j].cssRules[k]);
           }
+          return true;
+        }
       }
+    }
   }
   removeRule();
 })( window );

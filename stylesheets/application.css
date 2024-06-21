@@ -364,9 +364,9 @@ p.nodata{
 div.issue { background: #f6f6f6; }
 /*============ SELECT ==========*/
 select {
-    outline:none;
-    display: inline-block;
-    cursor:pointer;
+  outline:none;
+  display: inline-block;
+  cursor:pointer;
 }
 /*=========== MY PAGE ==========*/
 tr.time-entry {
