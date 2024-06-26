@@ -106,8 +106,8 @@
   const link = document.createElement('a');
   
   // 设置 <a> 元素的属性
-  link.href = 'https://www.example.com'; // 替换为你需要的 URL
-  link.textContent = 'Example Link'; // 替换为你需要的文本
+  link.href = '/account/register'; // 替换为你需要的 URL
+  link.textContent = '注册'; // 替换为你需要的文本
   
   // 设置 <a> 元素的样式
   link.style.position = 'fixed'; // 固定位置
