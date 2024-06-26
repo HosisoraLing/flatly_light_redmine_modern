@@ -85,7 +85,7 @@
     var homeLink = document.querySelector('a.home');
     // 修改href属性
     homeLink.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-    $.get("/users/current.xml",function (data){
+    $.get("/my/account.json",function (data){
       console.log(data);
     });
     // var weburl=window.location.href;
