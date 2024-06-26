@@ -85,16 +85,18 @@
     var homeLink = document.querySelector('a.home');
     // 修改href属性
     homeLink.href = "/projects/our-home/wiki";
-    $.get("/my/account.json",function (data){
-      console.log(data);
-      var pathname=window.location.pathname;
-      if (pathname === "/"){
-        window.location.href = "/projects/our-home/wiki";
-    }
-    });
+    // $.get("/my/account.json",function (data){
+    //   console.log(data);
+
+    // });
 
 
     var pathname=window.location.pathname;
+    
+    if (pathname === "/"){
+        window.location.href = "/projects/our-home/wiki";
+    }
+    
     pathname.split('/');
 
     if(pathname.includes("attachments")){
