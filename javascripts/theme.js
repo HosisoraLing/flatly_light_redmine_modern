@@ -102,7 +102,7 @@
     if(pathname.includes("attachments")){
       $( "#header").css("display", "none");
     }
-    if (activeStaticSidebar) {
+    if (activeStaticSidebar&&!(pathname.includes("login"))) {
       $( "#content" ).css( "margin-left", "215px" );
       $( "#header" ).css( "margin-left", "215px" );
       $( "#wrapper3" ).css( "margin-left", "215px" );
