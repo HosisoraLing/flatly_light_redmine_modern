@@ -84,7 +84,7 @@
     // 选择class为"home"的<a>元素
     var homeLink = document.querySelector('a.home');
     // 修改href属性
-    homeLink.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
+    homeLink.href = "/projects/our-home/wiki";
     $.get("/my/account.json",function (data){
       console.log(data);
       var pathname=window.location.pathname;
