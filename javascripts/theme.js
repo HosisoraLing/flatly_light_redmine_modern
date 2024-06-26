@@ -103,7 +103,7 @@
       $( "#header").css("display", "none");
     }
     if(pathname[1]==="login"){// 创建一个新的 <a> 元素
-      console.log("真的在试了")；
+      console.log("真的在试了");
    var link = document.createElement('a');
   
   // 设置 <a> 元素的属性
