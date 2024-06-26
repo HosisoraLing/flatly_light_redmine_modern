@@ -87,14 +87,15 @@
     homeLink.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
     $.get("/my/account.json",function (data){
       console.log(data);
-      var weburl=window.location.href;
-      if (weburl === "http://mx.yinhe596.cn:40880/"){
+      var pathname=window.location.pathname;
+      if (pathname === "/"){
         window.location.href = "/projects/our-home/wiki";
     }
     });
 
 
-    var pathname=window.location.pathname.split('/');
+    var pathname=window.location.pathname;
+    pathname.split('/');
 
     if(pathname.includes("attachments")){
       $( "#header").css("display", "none");
