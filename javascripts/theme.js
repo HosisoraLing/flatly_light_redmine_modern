@@ -93,9 +93,9 @@
 
     var pathname=window.location.pathname;
     
-    // if (pathname === "/"){
-    //     window.location.href = "/projects/our-home/wiki";
-    // }
+    if (pathname === "/"){
+        window.location.href = "/projects/our-home/wiki";
+    }
     
     pathname.split('/');
 
