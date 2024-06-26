@@ -89,52 +89,62 @@
     // });
 
 
-    var pathname=window.location.pathname;
-    console.log(pathname);
-    if (pathname === "/"){
+  var pathname = window.location.pathname;
+    console.log("Current pathname:", pathname);
+
+    // 检查是否为根路径
+    if (pathname === "/") {
         window.location.href = "/projects/our-home/wiki";
     }
 
-    pathname.split('/');
+    // 拆分路径
+    var pathParts = pathname.split('/');
 
-    if(pathname[1]==="attachments"){
-      $( "#header").css("display", "none");
+    // 检查路径的第二个部分是否为 "attachments"
+    if (pathParts[1] === "attachments") {
+        $("#header").css("display", "none");
     }
-    if(pathname[1]==="login"){
-      console.log("真的在试了");
-     var link = document.createElement('a');// 创建一个新的 <a> 元素
-  
-  // 设置 <a> 元素的属性
-    link.href = '/account/register'; // 替换为你需要的 URL
-    link.textContent = '注册'; // 替换为你需要的文本
-  
-    // 设置 <a> 元素的样式
-    link.style.position = 'fixed'; // 固定位置
-  link.style.top = '10px'; // 距离顶部 10px
-  link.style.right = '10px'; // 距离右边 10px
-  link.style.backgroundColor = '#f0f0f0'; // 背景颜色
-  link.style.padding = '10px'; // 内边距
-  link.style.borderRadius = '5px'; // 圆角
-  link.style.boxShadow = '0 0 5px rgba(0,0,0,0.3)'; // 阴影效果
-    link.style.zIndex = '1000'; // 确保在最上层显示
-  
-  // 将 <a> 元素添加到文档的 <body> 元素中
-    document.body.appendChild(link);
+
+    // 检查路径的第二个部分是否为 "login"
+    if (pathParts[1] === "login") {
+        console.log("真的在试了");
+
+        // 创建一个新的 <a> 元素
+        var link = document.createElement('a');
+        link.href = '/account/register'; // 替换为你需要的 URL
+        link.textContent = '注册'; // 替换为你需要的文本
+
+        // 设置 <a> 元素的样式
+        link.style.position = 'fixed'; // 固定位置
+        link.style.top = '10px'; // 距离顶部 10px
+        link.style.right = '10px'; // 距离右边 10px
+        link.style.backgroundColor = '#f0f0f0'; // 背景颜色
+        link.style.padding = '10px'; // 内边距
+        link.style.borderRadius = '5px'; // 圆角
+        link.style.boxShadow = '0 0 5px rgba(0,0,0,0.3)'; // 阴影效果
+        link.style.zIndex = '1000'; // 确保在最上层显示
+
+        // 将 <a> 元素添加到文档的 <body> 元素中
+        document.body.appendChild(link);
     }
-        var homeLink = document.querySelector('a.home');
-    // 修改href属性
-    homeLink.href = "/projects/our-home/wiki";
+
+    // 修改主页链接
+    var homeLink = document.querySelector('a.home');
+    if (homeLink) {
+        homeLink.href = "/projects/our-home/wiki";
+    }
+
+    // 检查并设置侧边栏样式
     if (activeStaticSidebar) {
-      $( "#content" ).css( "margin-left", "215px" );
-      $( "#header" ).css( "margin-left", "215px" );
-      $( "#wrapper3" ).css( "margin-left", "215px" );
-      $( "#quick-search" ).css( "left", "200px" );
-      $( "#top-menu" ).css( "left", "0" );
-      $( "#top-menu" ).css( "width", "215px" );
-      $( "#top-menu" ).css( "transition", "none" );
-      $( "#quick-search" ).css( "transition", "none" );
-    }
-  })
+        $("#content").css("margin-left", "215px");
+        $("#header").css("margin-left", "215px");
+        $("#wrapper3").css("margin-left", "215px");
+        $("#quick-search").css("left", "200px");
+        $("#top-menu").css("left", "0");
+        $("#top-menu").css("width", "215px");
+        $("#top-menu").css("transition", "none");
+        $("#quick-search").css("transition", "none");
+    }})
   $( document ).on( "click", "#main, #header", function() {
     $( "#top-menu" ).removeClass( "open" );
     $( ".menu-push-toright" ).removeClass( "menu-push-toright" );
