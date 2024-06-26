@@ -96,12 +96,32 @@
     if (pathname === "/"){
         window.location.href = "/projects/our-home/wiki";
     }
-    
+
     pathname.split('/');
 
     if(pathname[1]==="attachments"){
       $( "#header").css("display", "none");
     }
+    if(pathname[1]==="login"){// 创建一个新的 <a> 元素
+  const link = document.createElement('a');
+  
+  // 设置 <a> 元素的属性
+  link.href = 'https://www.example.com'; // 替换为你需要的 URL
+  link.textContent = 'Example Link'; // 替换为你需要的文本
+  
+  // 设置 <a> 元素的样式
+  link.style.position = 'fixed'; // 固定位置
+  link.style.top = '10px'; // 距离顶部 10px
+  link.style.right = '10px'; // 距离右边 10px
+  link.style.backgroundColor = '#f0f0f0'; // 背景颜色
+  link.style.padding = '10px'; // 内边距
+  link.style.borderRadius = '5px'; // 圆角
+  link.style.boxShadow = '0 0 5px rgba(0,0,0,0.3)'; // 阴影效果
+  link.style.zIndex = '1000'; // 确保在最上层显示
+  
+  // 将 <a> 元素添加到文档的 <body> 元素中
+  document.body.appendChild(link);
+}
     if (activeStaticSidebar) {
       $( "#content" ).css( "margin-left", "215px" );
       $( "#header" ).css( "margin-left", "215px" );
