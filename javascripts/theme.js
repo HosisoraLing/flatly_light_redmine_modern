@@ -82,9 +82,7 @@
     $( "#quick-search form" ).css('margin-right', $( "#s2id_project_quick_jump_box" ).width() + 60);
     $( 'input[name$="q"]' ).attr( 'placeholder','Enter Search Text' );
     // 选择class为"home"的<a>元素
-    var homeLink = document.querySelector('a.home');
-    // 修改href属性
-    homeLink.href = "/projects/our-home/wiki";
+
     // $.get("/my/account.json",function (data){
     //   console.log(data);
 
@@ -123,6 +121,9 @@
   // 将 <a> 元素添加到文档的 <body> 元素中
     document.body.appendChild(link);
     }
+        var homeLink = document.querySelector('a.home');
+    // 修改href属性
+    homeLink.href = "/projects/our-home/wiki";
     if (activeStaticSidebar) {
       $( "#content" ).css( "margin-left", "215px" );
       $( "#header" ).css( "margin-left", "215px" );
