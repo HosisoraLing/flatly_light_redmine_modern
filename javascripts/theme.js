@@ -99,10 +99,10 @@
     
     pathname.split('/');
 
-    if(pathname.includes("attachments")){
+    if(pathname[1]==="attachments"){
       $( "#header").css("display", "none");
     }
-    if (activeStaticSidebar&&!(pathname.includes("login"))) {
+    if (activeStaticSidebar&&!(pathname[1]==="login")) {
       $( "#content" ).css( "margin-left", "215px" );
       $( "#header" ).css( "margin-left", "215px" );
       $( "#wrapper3" ).css( "margin-left", "215px" );
