@@ -101,7 +101,7 @@
     var pathParts = pathname.split('/');
 
     // 检查路径的第二个部分是否为 "attachments"
-    if (pathParts[1] === "attachments") {
+    if (pathParts[1] === "attachments" || pathParts[1] === "onlyoffice") {
         $("#header").css("display", "none");
     }
 
