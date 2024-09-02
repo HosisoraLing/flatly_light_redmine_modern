@@ -104,6 +104,10 @@
     if (pathParts[1] === "attachments" || pathParts[1] === "onlyoffice") {
         $("#header").css("display", "none");
     }
+    //检测甘特图界面
+    if ( ((pathParts[1] === "projects") && (pathParts[3] === "issues")&& (pathParts[4] === "gantt")) || ((pathParts[1] === "issues") && (pathParts[2] === "gantt"))) {
+        
+    }
 
    
     // 修改主页链接
