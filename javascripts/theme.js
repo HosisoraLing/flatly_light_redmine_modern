@@ -82,31 +82,51 @@
     $( "#quick-search form" ).css('margin-right', $( "#s2id_project_quick_jump_box" ).width() + 60);
     $( 'input[name$="q"]' ).attr( 'placeholder','Enter Search Text' );
     // 选择class为"home"的<a>元素
+
+    // $.get("/my/account.json",function (data){
+    //   console.log(data);
+
+    // });
+
+
+  var pathname = window.location.pathname;
+    console.log("Current pathname:", pathname);
+
+    // 检查是否为根路径
+    if (pathname === "/") {
+        window.location.href = "/projects/our-home/wiki";
+    }
+
+    // 拆分路径
+    var pathParts = pathname.split('/');
+
+    // 检查路径的第二个部分是否为 "attachments"
+    if (pathParts[1] === "attachments" || pathParts[1] === "onlyoffice") {
+        $("#header").css("display", "none");
+    }
+    //检测甘特图界面
+    if ( ((pathParts[1] === "projects") && (pathParts[3] === "issues")&& (pathParts[4] === "gantt")) || ((pathParts[1] === "issues") && (pathParts[2] === "gantt"))) {
+        
+    }
+
+   
+    // 修改主页链接
     var homeLink = document.querySelector('a.home');
-    // 修改href属性
-    homeLink.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-
-    // var weburl=window.location.href;
-    // if (weburl === "http://mx.yinhe596.cn:40880/"){
-    //   window.location.href = "http://mx.yinhe596.cn:40880/projects/our-home/wiki";
-    // }
-
-    var pathname=window.location.pathname.split('/');
-
-    if(pathname.includes("attachments")){
-      $( "#header").css("display", "none");
+    if (homeLink) {
+        homeLink.href = "/projects/our-home/wiki";
     }
+
+    // 检查并设置侧边栏样式
     if (activeStaticSidebar) {
-      $( "#content" ).css( "margin-left", "215px" );
-      $( "#header" ).css( "margin-left", "215px" );
-      $( "#wrapper3" ).css( "margin-left", "215px" );
-      $( "#quick-search" ).css( "left", "200px" );
-      $( "#top-menu" ).css( "left", "0" );
-      $( "#top-menu" ).css( "width", "215px" );
-      $( "#top-menu" ).css( "transition", "none" );
-      $( "#quick-search" ).css( "transition", "none" );
-    }
-  })
+        $("#content").css("margin-left", "215px");
+        $("#header").css("margin-left", "215px");
+        $("#wrapper3").css("margin-left", "215px");
+        $("#quick-search").css("left", "200px");
+        $("#top-menu").css("left", "0");
+        $("#top-menu").css("width", "215px");
+        $("#top-menu").css("transition", "none");
+        $("#quick-search").css("transition", "none");
+    }})
   $( document ).on( "click", "#main, #header", function() {
     $( "#top-menu" ).removeClass( "open" );
     $( ".menu-push-toright" ).removeClass( "menu-push-toright" );
