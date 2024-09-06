@@ -108,11 +108,16 @@
     if ( ((pathParts[1] === "projects") && (pathParts[3] === "issues")&& (pathParts[4] === "gantt")) || ((pathParts[1] === "issues") && (pathParts[2] === "gantt"))) {
 
       <script type="text/javascript" src="html2canvas.js"></script>
+      <script type="text/javascript" src="FileSaver.js"></script>
+
       function convert() {
         html2canvas(document.body).then(canvas => {
-          document.body.appendChild(canvas)
+          canvas.toBlob(function (blob) {
+            saveAs(blob, "test.png");
+          });
         });
       }
+
       convert();
     }
 
