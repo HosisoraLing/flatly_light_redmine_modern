@@ -106,10 +106,17 @@
     }
     //检测甘特图界面
     if ( ((pathParts[1] === "projects") && (pathParts[3] === "issues")&& (pathParts[4] === "gantt")) || ((pathParts[1] === "issues") && (pathParts[2] === "gantt"))) {
-        
+
+      <script type="text/javascript" src="html2canvas.js"></script>
+      function convert() {
+        html2canvas(document.body).then(canvas => {
+          document.body.appendChild(canvas)
+        });
+      }
+      convert();
     }
 
-   
+
     // 修改主页链接
     var homeLink = document.querySelector('a.home');
     if (homeLink) {
