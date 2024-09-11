@@ -152,7 +152,18 @@
     //   convert();
     // }
 
-
+    document.addEventListener('DOMContentLoaded', function() {
+      var script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js';
+      script.onload = function() {
+        // html2canvas加载完成后的代码
+        document.querySelector(".gantt-table").style.border = "1px solid #000"; // 举例：给表格添加边框以便在html2canvas中显示
+        html2canvas(document.querySelector(".gantt-table")).then(canvas => {
+          const imgData = canvas.toDataURL('image/png');
+        });
+      };
+      document.head.appendChild(script);
+    });
     if (pathParts.indexOf("gantt") != -1) {
       function innerHtmlPrint(){
         // 缓存页面内容
