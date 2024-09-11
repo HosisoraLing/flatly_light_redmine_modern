@@ -164,9 +164,9 @@
     }
 
 // html2canvas 的 CDN 链接
-    var html2canvasURL = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js';
+//     var html2canvasURL = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js';
 // jsPDF 的 CDN 链接
-    var jspdfURL = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+//     var jspdfURL = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
 
 // 首先加载 html2canvas
 //     loadScript(html2canvasURL, function() {
