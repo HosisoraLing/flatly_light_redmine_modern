@@ -105,25 +105,25 @@
         $("#header").css("display", "none");
     }
     //检测甘特图界面
-    if ( ((pathParts[1] === "projects") && (pathParts[3] === "issues")&& (pathParts[4] === "gantt")) || ((pathParts[1] === "issues") && (pathParts[2] === "gantt"))) {
-
-      <script type="text/javascript" src="html2canvas.js"></script>
-      <script type="text/javascript" src="FileSaver.js"></script>
-
-      function convert() {
-        html2canvas(document.getElementById('gantt-table'), {
-          function(canvas) {
-            // 创建一个canvas
-            // document.body.appendChild(canvas);
-            let dataUrl;
-            dataUrl=canvas.toDataURL("image/jpeg", 1.0);
-            DownLoadImg(dataUrl.replace("data:image/jpeg;base64,", ""))
-          },
-        });
-      }
-
-      convert();
-    }
+    // if ( ((pathParts[1] === "projects") && (pathParts[3] === "issues")&& (pathParts[4] === "gantt")) || ((pathParts[1] === "issues") && (pathParts[2] === "gantt"))) {
+    //
+    //   <script type="text/javascript" src="html2canvas.js"></script>
+    //   <script type="text/javascript" src="FileSaver.js"></script>
+    //
+    //   function convert() {
+    //     html2canvas(document.getElementById('gantt-table'), {
+    //       function(canvas) {
+    //         // 创建一个canvas
+    //         // document.body.appendChild(canvas);
+    //         let dataUrl;
+    //         dataUrl=canvas.toDataURL("image/jpeg", 1.0);
+    //         DownLoadImg(dataUrl.replace("data:image/jpeg;base64,", ""))
+    //       },
+    //     });
+    //   }
+    //
+    //   convert();
+    // }
 
 
     // 修改主页链接
