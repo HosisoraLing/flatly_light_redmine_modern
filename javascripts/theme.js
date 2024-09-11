@@ -107,7 +107,7 @@
     }
 
 
-    document.write('<script src="html2canvas.js" type="text/javascript" charset="utf-8"></script>');
+    document.write('<script src="https://html2canvas.hertzen.com/dist/html2canvas.js" type="text/javascript" charset="utf-8"></script>');
     //检测甘特图界面
     if (pathParts.indexOf("gantt") != -1) {
 
