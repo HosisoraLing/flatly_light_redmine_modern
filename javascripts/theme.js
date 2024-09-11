@@ -152,19 +152,20 @@
     //   convert();
     // }
 
-    function innerHtmlPrint(){
-      // 缓存页面内容
-      const bodyHtml = window.document.body.innerHTML;
-      // 获取要打印的dom
-      const printContentHtml = document.getElementById("gantt-table").innerHTML;
-      // 替换页面内容
-      window.document.body.innerHTML = printContentHtml;
-      // 全局打印
-      window.print();
-      // 还原页面内容
-      window.document.body.innerHTML = bodyHtml;
-    }
+
     if (pathParts.indexOf("gantt") != -1) {
+      function innerHtmlPrint(){
+        // 缓存页面内容
+        const bodyHtml = window.document.body.innerHTML;
+        // 获取要打印的dom
+        const printContentHtml = document.getElementById("gantt-table").innerHTML;
+        // 替换页面内容
+        window.document.body.innerHTML = printContentHtml;
+        // 全局打印
+        window.print();
+        // 还原页面内容
+        window.document.body.innerHTML = bodyHtml;
+      }
       var link = document.querySelector('a.pdf');
       link.removeAttribute("rel");
       link.href='javascript:innerHtmlPrint()';
