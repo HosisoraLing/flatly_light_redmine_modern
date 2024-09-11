@@ -209,7 +209,7 @@
         html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
           var imgData = canvas.toDataURL('image/png');
           var pdf = new window.jspdf.jsPDF();
-          pdf.addImage(imgData, 'PNG', 10, 10);
+          pdf.addImage(imgData, 'PNG', 100, 100);
           pdf.save('table.pdf');
         });
       });
