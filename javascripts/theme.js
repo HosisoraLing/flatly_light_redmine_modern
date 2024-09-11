@@ -112,7 +112,7 @@
 
       function convert() {
         html2canvas(document.getElementById('gantt-table'), {
-          onrendered: function(canvas) {
+          function(canvas) {
             // 创建一个canvas
             // document.body.appendChild(canvas);
             let dataUrl;
