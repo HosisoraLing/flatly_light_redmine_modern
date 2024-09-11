@@ -206,7 +206,7 @@
         // window.print();
         // // 还原页面内容
         // window.document.body.innerHTML = bodyHtml;
-        html2canvas(document.querySelector(".content")).then(function(canvas) {
+        html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
           var imgData = canvas.toDataURL('image/png');
           var pdf = new window.jspdf.jsPDF();
           pdf.addImage(imgData, 'PNG', 10, 10);
