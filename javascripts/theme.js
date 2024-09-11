@@ -108,7 +108,25 @@
     if (pathParts.indexOf("gantt") != -1) {
 
       import html2canvas from 'html2canvas.js';
-
+      function DownLoadImg(content){
+        // 格式
+        var imageType='png';
+        // 文件名
+        var fileName=Date.now();
+        var raw = window.atob(content);
+        var rawLength = raw.length;
+        var uInt8Array = new Uint8Array(rawLength);
+        for(var i = 0; i < rawLength; ++i) {
+          uInt8Array[i] = raw.charCodeAt(i);
+        }
+        var blob = new Blob([uInt8Array], {type:'image/'+imageType});
+        var aLink = document.createElement('a');
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("click", true, true);
+        aLink.download = fileName;
+        aLink.href = URL.createObjectURL(blob);
+        aLink.click();
+      }
       function convert() {
         html2canvas(document.getElementById('gantt-table'), {
           function(canvas) {
