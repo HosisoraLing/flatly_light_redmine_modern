@@ -180,52 +180,41 @@
 
       });
     });
-    if (pathParts.indexOf("gantt") != -1) {
-      function innerHtmlPrint(){
-        // 缓存页面内容
-        const bodyHtml = window.document.body.innerHTML;
-        // 获取要打印的dom
-        const printContentHtml = document.getElementById("gantt-table").innerHTML;
-        // 替换页面内容
-        window.document.body.innerHTML = printContentHtml;
-        // 全局打印
-        window.print();
-        // 还原页面内容
-        window.document.body.innerHTML = bodyHtml;
-      }
-      var link = document.querySelector('a.pdf');
-      link.removeAttribute("rel");
-      link.removeAttribute("href");
-      link.addEventListener('click', function (event){
-        // const bodyHtml = window.document.body.innerHTML;
-        // // 获取要打印的dom
-        // const printContentHtml = document.querySelector('.gantt-table').innerHTML;
-        // // 替换页面内容
-        // window.document.body.innerHTML = printContentHtml;
-        // // 全局打印
-        // window.print();
-        // // 还原页面内容
-        // window.document.body.innerHTML = bodyHtml;
-        html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
-          var imgData = canvas.toDataURL('image/png');
-          // 假设我们想要的 PDF 边距是 10mm
-          var margin = 10;
-          // 获取画布的尺寸
-          var canvasWidth = canvas.width;
-          var canvasHeight = canvas.height;
-          // 将像素转换为点
-          var pdfWidth = canvasWidth / 1;
-          var pdfHeight = canvasHeight / 1;
-          // 创建 PDF 实例，方向设置为横向（landscape）
-          var pdf = new window.jspdf.jsPDF('landscape', 'pt', [pdfWidth, pdfHeight]);
-          // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
-          pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
-          // 保存 PDF
-          pdf.save('gantt-table.pdf');
-        });
-      });
-
-    }
+    // if (pathParts.indexOf("gantt") != -1) {
+    //
+    //   var link = document.querySelector('a.pdf');
+    //   link.removeAttribute("rel");
+    //   link.removeAttribute("href");
+    //   link.addEventListener('click', function (event){
+    //     // const bodyHtml = window.document.body.innerHTML;
+    //     // // 获取要打印的dom
+    //     // const printContentHtml = document.querySelector('.gantt-table').innerHTML;
+    //     // // 替换页面内容
+    //     // window.document.body.innerHTML = printContentHtml;
+    //     // // 全局打印
+    //     // window.print();
+    //     // // 还原页面内容
+    //     // window.document.body.innerHTML = bodyHtml;
+    //     html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
+    //       var imgData = canvas.toDataURL('image/png');
+    //       // 假设我们想要的 PDF 边距是 10mm
+    //       var margin = 10;
+    //       // 获取画布的尺寸
+    //       var canvasWidth = canvas.width;
+    //       var canvasHeight = canvas.height;
+    //       // 将像素转换为点
+    //       var pdfWidth = canvasWidth / 1;
+    //       var pdfHeight = canvasHeight / 1;
+    //       // 创建 PDF 实例，方向设置为横向（landscape）
+    //       var pdf = new window.jspdf.jsPDF('landscape', 'pt', [pdfWidth, pdfHeight]);
+    //       // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
+    //       pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
+    //       // 保存 PDF
+    //       pdf.save('gantt-table.pdf');
+    //     });
+    //   });
+    //
+    // }
 
     // 修改主页链接
     var homeLink = document.querySelector('a.home');
