@@ -177,12 +177,7 @@
 
         // 现在可以使用 html2canvas 和 jsPDF
         document.querySelector(".gantt-table").style.border = "1px solid #000"; // 举例：给表格添加边框以便在html2canvas中显示
-        html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
-          var imgData = canvas.toDataURL('image/png');
-          var pdf = new jspdf();
-          pdf.addImage(imgData, 'PNG', 10, 10);
-          pdf.save('table.pdf');
-        });
+
       });
     });
     if (pathParts.indexOf("gantt") != -1) {
@@ -211,6 +206,12 @@
         window.print();
         // 还原页面内容
         window.document.body.innerHTML = bodyHtml;
+        html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
+          var imgData = canvas.toDataURL('image/png');
+          var pdf = new jsPDF();
+          pdf.addImage(imgData, 'PNG', 10, 10);
+          pdf.save('table.pdf');
+        });
       });
 
     }
