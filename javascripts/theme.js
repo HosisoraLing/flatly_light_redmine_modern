@@ -89,7 +89,8 @@
     // });
 
 
-  var pathname = window.location.pathname;
+
+    var pathname = window.location.pathname;
     console.log("Current pathname:", pathname);
 
     // 检查是否为根路径
@@ -104,10 +105,12 @@
     if (pathParts[1] === "attachments" || pathParts[1] === "onlyoffice") {
         $("#header").css("display", "none");
     }
+
+
+    document.write('<script src="html2canvas.js" type="text/javascript" charset="utf-8"></script>');
     //检测甘特图界面
     if (pathParts.indexOf("gantt") != -1) {
 
-      import html2canvas from 'html2canvas.js';
       function DownLoadImg(content){
         // 格式
         var imageType='png';
