@@ -165,7 +165,6 @@
       window.document.body.innerHTML = bodyHtml;
     }
     if (pathParts.indexOf("gantt") != -1) {
-      <a className="pdf" rel="nofollow" href="/issues/gantt.pdf?month=9&amp;months=5&amp;year=2024&amp;zoom=4">PDF</a>
       var link = document.querySelector('a.pdf');
       link.removeAttribute("rel")
       link.removeAttribute("herf")
