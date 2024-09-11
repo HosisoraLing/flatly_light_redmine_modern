@@ -153,15 +153,15 @@
     // }
 
     // 动态加载 html2canvas
-    function loadScript(url, callback) {
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = url;
-      script.onload = function() {
-        callback();
-      };
-      document.head.appendChild(script);
-    }
+    // function loadScript(url, callback) {
+    //   var script = document.createElement('script');
+    //   script.type = 'text/javascript';
+    //   script.src = url;
+    //   script.onload = function() {
+    //     callback();
+    //   };
+    //   document.head.appendChild(script);
+    // }
 
 // html2canvas 的 CDN 链接
 //     var html2canvasURL = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js';
