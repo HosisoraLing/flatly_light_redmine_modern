@@ -172,7 +172,7 @@
       link.addEventListener('click', function (event){
         const bodyHtml = window.document.body.innerHTML;
         // 获取要打印的dom
-        const printContentHtml = document.getElementById("gantt-table").innerHTML;
+        const printContentHtml = document.querySelector('.gantt-table').innerHTML;
         // 替换页面内容
         window.document.body.innerHTML = printContentHtml;
         // 全局打印
