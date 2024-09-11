@@ -111,10 +111,13 @@
       <script type="text/javascript" src="FileSaver.js"></script>
 
       function convert() {
-        html2canvas(document.body).then(canvas => {
-          canvas.toBlob(function (blob) {
-            saveAs(blob, "test.png");
-          });
+        html2canvas(document.getElementById('gantt-table'), {
+          onrendered: function(canvas) {
+            // 创建一个canvas
+            // document.body.appendChild(canvas);
+            dataUrl=canvas.toDataURL("image/jpeg", 1.0);
+            DownLoadImg(dataUrl.replace("data:image/jpeg;base64,", ""))
+          },
         });
       }
 
