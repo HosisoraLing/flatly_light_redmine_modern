@@ -208,8 +208,8 @@
         // window.document.body.innerHTML = bodyHtml;
         html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
           var imgData = canvas.toDataURL('image/png');
-          var pdf = new window.jspdf.jsPDF();
-          pdf.addImage(imgData, 'PNG', 10, 10);
+          var pdf = new window.jspdf.jsPDF(('landscape','pt',[1920, 1080]));
+          pdf.addImage(imgData, 'PNG', 0, 0,1920,1080);
           pdf.save('table.pdf');
         });
       });
