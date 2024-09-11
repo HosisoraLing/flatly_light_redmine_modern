@@ -151,57 +151,25 @@
     //
     //   convert();
     // }
-    function innerHtmlPrint() {
+
+    function innerHtmlPrint(){
       // 缓存页面内容
       const bodyHtml = window.document.body.innerHTML;
       // 获取要打印的dom
-      const printContentHtml = document.getElementById("gantt-table");
-      if (printContentHtml) {
-        // 替换页面内容
-        window.document.body.innerHTML = printContentHtml.innerHTML;
-        // 全局打印
-        window.print();
-        // 还原页面内容
-        window.document.body.innerHTML = bodyHtml;
-      } else {
-        console.log('没有找到ID为"gantt-table"的元素');
-      }
+      const printContentHtml = document.getElementById("gantt-table").innerHTML;
+      // 替换页面内容
+      window.document.body.innerHTML = printContentHtml;
+      // 全局打印
+      window.print();
+      // 还原页面内容
+      window.document.body.innerHTML = bodyHtml;
     }
-
-// 检查URL中是否包含"gantt"
-    if (window.location.pathname.indexOf("gantt") != -1) {
+    if (pathParts.indexOf("gantt") != -1) {
       var link = document.querySelector('a.pdf');
-      if (link) {
-        // 移除rel和href属性
-        link.removeAttribute("rel");
-        link.removeAttribute("href"); // 修正拼写错误
-        // 添加点击事件监听器
-        link.addEventListener('click', function(event) {
-          event.preventDefault(); // 阻止默认的链接行为
-          innerHtmlPrint();
-        });
-      } else {
-        console.log('没有找到类名为"pdf"的<a>标签');
-      }
+      link.removeAttribute("rel")
+      link.removeAttribute("href")
+      link.addEventListener('click', innerHtmlPrint);
     }
-    // function innerHtmlPrint(){
-    //   // 缓存页面内容
-    //   const bodyHtml = window.document.body.innerHTML;
-    //   // 获取要打印的dom
-    //   const printContentHtml = document.getElementById("gantt-table").innerHTML;
-    //   // 替换页面内容
-    //   window.document.body.innerHTML = printContentHtml;
-    //   // 全局打印
-    //   window.print();
-    //   // 还原页面内容
-    //   window.document.body.innerHTML = bodyHtml;
-    // }
-    // if (pathParts.indexOf("gantt") != -1) {
-    //   var link = document.querySelector('a.pdf');
-    //   link.removeAttribute("rel")
-    //   link.removeAttribute("href")
-    //   link.addEventListener('click', innerHtmlPrint);
-    // }
 
     // 修改主页链接
     var homeLink = document.querySelector('a.home');
