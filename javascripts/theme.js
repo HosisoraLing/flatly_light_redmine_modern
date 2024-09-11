@@ -208,7 +208,6 @@
         window.document.body.innerHTML = bodyHtml;
         html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
           var imgData = canvas.toDataURL('image/png');
-          const jsPDF = require('jspdf');
           var pdf = new jsPDF();
           pdf.addImage(imgData, 'PNG', 10, 10);
           pdf.save('table.pdf');
