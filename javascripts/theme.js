@@ -115,6 +115,7 @@
           onrendered: function(canvas) {
             // 创建一个canvas
             // document.body.appendChild(canvas);
+            let dataUrl;
             dataUrl=canvas.toDataURL("image/jpeg", 1.0);
             DownLoadImg(dataUrl.replace("data:image/jpeg;base64,", ""))
           },
