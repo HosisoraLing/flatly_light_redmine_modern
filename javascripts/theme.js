@@ -208,8 +208,19 @@
         // window.document.body.innerHTML = bodyHtml;
         html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
           var imgData = canvas.toDataURL('image/png');
-          var pdf = new window.jspdf.jsPDF(('landscape','pt',[1920, 1080]));
-          pdf.addImage(imgData, 'PNG', 0, 0,1920,1080);
+          // 假设我们想要的 PDF 边距是 10mm
+          var margin = 10;
+          // 获取画布的尺寸
+          var canvasWidth = canvas.width;
+          var canvasHeight = canvas.height;
+          // 将像素转换为点（假设 1pt = 1px）
+          var pdfWidth = canvasWidth / 1;
+          var pdfHeight = canvasHeight / 1;
+          // 创建 PDF 实例，方向设置为横向（landscape）
+          var pdf = new window.jspdf.jsPDF('landscape', 'pt', [pdfWidth, pdfHeight]);
+          // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
+          pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
+          // 保存 PDF
           pdf.save('table.pdf');
         });
       });
