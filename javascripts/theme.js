@@ -108,49 +108,49 @@
 
 
     // document.write('<script src="https://html2canvas.hertzen.com/dist/html2canvas.js" type="text/javascript" charset="utf-8"></script>');
-    var  JSElement=document.createElement("script");
-
-    JSElement.setAttribute("type","text/javascript");
-
-    JSElement.setAttribute("src","https://html2canvas.hertzen.com/dist/html2canvas.js");
-
-    document.body.appendChild(JSElement);
+    // var  JSElement=document.createElement("script");
+    //
+    // JSElement.setAttribute("type","text/javascript");
+    //
+    // JSElement.setAttribute("src","https://html2canvas.hertzen.com/dist/html2canvas.js");
+    //
+    // document.body.appendChild(JSElement);
     //检测甘特图界面
-    if (pathParts.indexOf("gantt") != -1) {
-
-      function DownLoadImg(content){
-        // 格式
-        var imageType='png';
-        // 文件名
-        var fileName=Date.now();
-        var raw = window.atob(content);
-        var rawLength = raw.length;
-        var uInt8Array = new Uint8Array(rawLength);
-        for(var i = 0; i < rawLength; ++i) {
-          uInt8Array[i] = raw.charCodeAt(i);
-        }
-        var blob = new Blob([uInt8Array], {type:'image/'+imageType});
-        var aLink = document.createElement('a');
-        var evt = document.createEvent("HTMLEvents");
-        evt.initEvent("click", true, true);
-        aLink.download = fileName;
-        aLink.href = URL.createObjectURL(blob);
-        aLink.click();
-      }
-      function convert() {
-        html2canvas(document.getElementById('gantt-table'), {
-          function(canvas) {
-            // 创建一个canvas
-            // document.body.appendChild(canvas);
-            let dataUrl;
-            dataUrl=canvas.toDataURL("image/jpeg", 1.0);
-            DownLoadImg(dataUrl.replace("data:image/jpeg;base64,", ""))
-          },
-        });
-      }
-
-      convert();
-    }
+    // if (pathParts.indexOf("gantt") != -1) {
+    //
+    //   function DownLoadImg(content){
+    //     // 格式
+    //     var imageType='png';
+    //     // 文件名
+    //     var fileName=Date.now();
+    //     var raw = window.atob(content);
+    //     var rawLength = raw.length;
+    //     var uInt8Array = new Uint8Array(rawLength);
+    //     for(var i = 0; i < rawLength; ++i) {
+    //       uInt8Array[i] = raw.charCodeAt(i);
+    //     }
+    //     var blob = new Blob([uInt8Array], {type:'image/'+imageType});
+    //     var aLink = document.createElement('a');
+    //     var evt = document.createEvent("HTMLEvents");
+    //     evt.initEvent("click", true, true);
+    //     aLink.download = fileName;
+    //     aLink.href = URL.createObjectURL(blob);
+    //     aLink.click();
+    //   }
+    //   function convert() {
+    //     html2canvas(document.getElementById('gantt-table'), {
+    //       function(canvas) {
+    //         // 创建一个canvas
+    //         // document.body.appendChild(canvas);
+    //         let dataUrl;
+    //         dataUrl=canvas.toDataURL("image/jpeg", 1.0);
+    //         DownLoadImg(dataUrl.replace("data:image/jpeg;base64,", ""))
+    //       },
+    //     });
+    //   }
+    //
+    //   convert();
+    // }
 
 
     // 修改主页链接
