@@ -197,15 +197,15 @@
       link.removeAttribute("rel");
       link.removeAttribute("href");
       link.addEventListener('click', function (event){
-        const bodyHtml = window.document.body.innerHTML;
-        // 获取要打印的dom
-        const printContentHtml = document.querySelector('.gantt-table').innerHTML;
-        // 替换页面内容
-        window.document.body.innerHTML = printContentHtml;
-        // 全局打印
-        window.print();
-        // 还原页面内容
-        window.document.body.innerHTML = bodyHtml;
+        // const bodyHtml = window.document.body.innerHTML;
+        // // 获取要打印的dom
+        // const printContentHtml = document.querySelector('.gantt-table').innerHTML;
+        // // 替换页面内容
+        // window.document.body.innerHTML = printContentHtml;
+        // // 全局打印
+        // window.print();
+        // // 还原页面内容
+        // window.document.body.innerHTML = bodyHtml;
         html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
           var imgData = canvas.toDataURL('image/png');
           var pdf = new window.jspdf.jsPDF();
