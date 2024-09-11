@@ -166,9 +166,9 @@
     }
     if (pathParts.indexOf("gantt") != -1) {
       var link = document.querySelector('a.pdf');
-      link.removeAttribute("rel")
-      link.removeAttribute("href")
-      link.addEventListener('click', innerHtmlPrint);
+      link.removeAttribute("rel");
+      link.href='javascript:innerHtmlPrint()';
+
     }
 
     // 修改主页链接
