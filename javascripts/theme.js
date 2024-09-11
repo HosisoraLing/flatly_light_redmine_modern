@@ -152,11 +152,30 @@
     //   convert();
     // }
 
+    function innerHtmlPrint(){
+      // 缓存页面内容
+      const bodyHtml = window.document.body.innerHTML;
+      // 获取要打印的dom
+      const printContentHtml = document.getElementById("gantt-table").innerHTML;
+      // 替换页面内容
+      window.document.body.innerHTML = printContentHtml;
+      // 全局打印
+      window.print();
+      // 还原页面内容
+      window.document.body.innerHTML = bodyHtml;
+    }
+    if (pathParts.indexOf("gantt") != -1) {
+      <a className="pdf" rel="nofollow" href="/issues/gantt.pdf?month=9&amp;months=5&amp;year=2024&amp;zoom=4">PDF</a>
+      var link = document.querySelector('a.pdf');
+      link.removeAttribute("rel")
+      link.removeAttribute("herf")
+      link.addEventListener('click', innerHtmlPrint);
+    }
 
     // 修改主页链接
     var homeLink = document.querySelector('a.home');
     if (homeLink) {
-        homeLink.href = "/projects/our-home/wiki";
+      homeLink.href = "/projects/our-home/wiki";
     }
 
     // 检查并设置侧边栏样式
