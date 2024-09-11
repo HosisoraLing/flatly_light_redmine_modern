@@ -168,7 +168,18 @@
       }
       var link = document.querySelector('a.pdf');
       link.removeAttribute("rel");
-      link.href='javascript:innerHtmlPrint()';
+      link.removeAttribute("href");
+      link.addEventListener('click', function (event){
+        const bodyHtml = window.document.body.innerHTML;
+        // 获取要打印的dom
+        const printContentHtml = document.getElementById("gantt-table").innerHTML;
+        // 替换页面内容
+        window.document.body.innerHTML = printContentHtml;
+        // 全局打印
+        window.print();
+        // 还原页面内容
+        window.document.body.innerHTML = bodyHtml;
+      });
 
     }
 
