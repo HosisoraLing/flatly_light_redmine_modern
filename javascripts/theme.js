@@ -168,7 +168,7 @@
       var link = document.querySelector('a.pdf');
       link.removeAttribute("rel")
       link.removeAttribute("href")
-      link.addEventListener('click', innerHtmlPrint);
+      link.onclick = innerHtmlPrint;
     }
 
     // 修改主页链接
