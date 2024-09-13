@@ -199,13 +199,13 @@
           // document.body.removeChild(link); // 下载后移除a元素
           var margin = 10;
           // 获取画布的尺寸
-          var canvasWidth = imgData.width;
-          var canvasHeight = imgData.height;
+          var canvasWidth = canvas.width;
+          var canvasHeight = canvas.height;
           // 将像素转换为点
           var pdfWidth = canvasWidth / 1;
           var pdfHeight = canvasHeight / 1;
           // 创建 PDF 实例，方向设置为横向（landscape）
-          var pdf = new window.jspdf.jsPDF('landscape', 'px', [pdfWidth, pdfHeight]);
+          var pdf = new window.jspdf.jsPDF('landscape', 'pt', [pdfWidth, pdfHeight]);
           // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
           pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
           // 保存 PDF
