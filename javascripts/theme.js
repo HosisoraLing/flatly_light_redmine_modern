@@ -191,7 +191,9 @@
           var imgData = canvas.toDataURL('image/png');
           const link = document.createElement('a');
           link.href = imgData;
-          link.download = fileName || 'downloaded_canvas.png'; // 设置下载的文件名
+          let fileName;
+          fileName='downloaded_canvas.png'
+          link.download = fileName; // 设置下载的文件名
           document.body.appendChild(link); // 将a元素添加到页面中
           link.click(); // 模拟点击事件，触发下载
           document.body.removeChild(link); // 下载后移除a元素
