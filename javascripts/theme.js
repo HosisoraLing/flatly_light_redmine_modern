@@ -153,33 +153,33 @@
     // }
 
     // 动态加载 html2canvas
-    // function loadScript(url, callback) {
-    //   var script = document.createElement('script');
-    //   script.type = 'text/javascript';
-    //   script.src = url;
-    //   script.onload = function() {
-    //     callback();
-    //   };
-    //   document.head.appendChild(script);
-    // }
+    function loadScript(url, callback) {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = url;
+      script.onload = function() {
+        callback();
+      };
+      document.head.appendChild(script);
+    }
 
 // html2canvas 的 CDN 链接
-//     var html2canvasURL = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js';
+    var html2canvasURL = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js';
 // jsPDF 的 CDN 链接
-//     var jspdfURL = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    var jspdfURL = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
 
 // 首先加载 html2canvas
-//     loadScript(html2canvasURL, function() {
-//       // html2canvas 加载完成后，加载 jsPDF
-//       loadScript(jspdfURL, function() {
-//         // 两个库都加载完成后的回调函数
-//         console.log('html2canvas and jsPDF are loaded.');
-//
-//         // 现在可以使用 html2canvas 和 jsPDF
-//         document.querySelector(".gantt-table").style.border = "1px solid #000"; // 举例：给表格添加边框以便在html2canvas中显示
-//
-//       });
-//     });
+    loadScript(html2canvasURL, function() {
+      // html2canvas 加载完成后，加载 jsPDF
+      loadScript(jspdfURL, function() {
+        // 两个库都加载完成后的回调函数
+        console.log('html2canvas and jsPDF are loaded.');
+
+        // 现在可以使用 html2canvas 和 jsPDF
+        document.querySelector(".gantt-table").style.border = "1px solid #000"; // 举例：给表格添加边框以便在html2canvas中显示
+
+      });
+    });
 //     if (pathParts.indexOf("gantt") != -1) {
 //
 //       var link = document.querySelector('a.pdf');
