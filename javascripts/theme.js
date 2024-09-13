@@ -259,20 +259,29 @@
     }
 
     function combineSegmentsIntoPDF(segments) {
-      // 创建 PDF 实例
-      var pdf = new jspdf.jsPDF('landscape', 'pt', [800, 1200]);
+      var pdf = new jspdf.jsPDF('landscape', 'pt', 'a4');
       var margin = 10;
+      var yPos = margin;
 
       segments.forEach(function (canvas, index) {
         var imgData = canvas.toDataURL('image/png');
-        var pdfWidth = 800;
+        var pdfWidth = pdf.internal.pageSize.getWidth();
         var pdfHeight = canvas.height * (pdfWidth / canvas.width);
-        pdf.addImage(imgData, 'PNG', margin, margin + (index * pdfHeight), pdfWidth - 2 * margin, pdfHeight - 2 * margin);
+        var imgHeight = pdfHeight - 2 * margin;
+
+        if (yPos + imgHeight > pdf.internal.pageSize.getHeight()) {
+          pdf.addPage();
+          yPos = margin;
+        }
+
+        pdf.addImage(imgData, 'PNG', margin, yPos, pdfWidth - 2 * margin, imgHeight);
+        yPos += imgHeight + 10; // Add a small gap between segments
       });
 
-      // 保存 PDF
       pdf.save('gantt-table.pdf');
     }
+
+// Usage
 
     if (pathParts.indexOf("gantt") != -1) {
       var link = document.querySelector('a.pdf');
