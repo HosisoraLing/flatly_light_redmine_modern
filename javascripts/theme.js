@@ -189,14 +189,14 @@
 
         html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
           var imgData = canvas.toDataURL('image/png');
-          const link = document.createElement('a');
-          link.href = imgData;
-          let fileName;
-          fileName='downloaded_canvas.png'
-          link.download = fileName; // 设置下载的文件名
-          document.body.appendChild(link); // 将a元素添加到页面中
-          link.click(); // 模拟点击事件，触发下载
-          document.body.removeChild(link); // 下载后移除a元素
+          // const link = document.createElement('a');
+          // link.href = imgData;
+          // let fileName;
+          // fileName='downloaded_canvas.png'
+          // link.download = fileName; // 设置下载的文件名
+          // document.body.appendChild(link); // 将a元素添加到页面中
+          // link.click(); // 模拟点击事件，触发下载
+          // document.body.removeChild(link); // 下载后移除a元素
           var margin = 10;
           // 获取画布的尺寸
           var canvasWidth = canvas.width;
@@ -205,7 +205,7 @@
           var pdfWidth = canvasWidth / 1;
           var pdfHeight = canvasHeight / 1;
           // 创建 PDF 实例，方向设置为横向（landscape）
-          var pdf = new window.jspdf.jsPDF('landscape', 'px', [pdfWidth, pdfHeight]);
+          var pdf = new window.jspdf.jsPDF();
           // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
           pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
           // 保存 PDF
