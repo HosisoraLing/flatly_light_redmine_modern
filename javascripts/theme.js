@@ -180,41 +180,110 @@
 //
 //       });
 //     });
-    // if (pathParts.indexOf("gantt") != -1) {
-    //
-    //   var link = document.querySelector('a.pdf');
-    //   link.removeAttribute("rel");
-    //   link.removeAttribute("href");
-    //   link.addEventListener('click', function (event){
-    //     // const bodyHtml = window.document.body.innerHTML;
-    //     // // 获取要打印的dom
-    //     // const printContentHtml = document.querySelector('.gantt-table').innerHTML;
-    //     // // 替换页面内容
-    //     // window.document.body.innerHTML = printContentHtml;
-    //     // // 全局打印
-    //     // window.print();
-    //     // // 还原页面内容
-    //     // window.document.body.innerHTML = bodyHtml;
-    //     html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
-    //       var imgData = canvas.toDataURL('image/png');
-    //       // 假设我们想要的 PDF 边距是 10mm
-    //       var margin = 10;
-    //       // 获取画布的尺寸
-    //       var canvasWidth = canvas.width;
-    //       var canvasHeight = canvas.height;
-    //       // 将像素转换为点
-    //       var pdfWidth = canvasWidth / 1;
-    //       var pdfHeight = canvasHeight / 1;
-    //       // 创建 PDF 实例，方向设置为横向（landscape）
-    //       var pdf = new window.jspdf.jsPDF('landscape', 'pt', [pdfWidth, pdfHeight]);
-    //       // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
-    //       pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
-    //       // 保存 PDF
-    //       pdf.save('gantt-table.pdf');
-    //     });
-    //   });
-    //
-    // }
+//     if (pathParts.indexOf("gantt") != -1) {
+//
+//       var link = document.querySelector('a.pdf');
+//       link.removeAttribute("rel");
+//       link.removeAttribute("href");
+//       link.addEventListener('click', function (event){
+//
+//         html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
+//           var imgData = canvas.toDataURL('image/png');
+//           var margin = 10;
+//           // 获取画布的尺寸
+//           var canvasWidth = canvas.width;
+//           var canvasHeight = canvas.height;
+//           // 将像素转换为点
+//           var pdfWidth = canvasWidth / 1;
+//           var pdfHeight = canvasHeight / 1;
+//           // 创建 PDF 实例，方向设置为横向（landscape）
+//           var pdf = new window.jspdf.jsPDF('landscape', 'pt', [pdfWidth, pdfHeight]);
+//           // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
+//           pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
+//           // 保存 PDF
+//           pdf.save('gantt-table.pdf');
+//         });
+//       });
+//
+//     }
+
+
+    function capturePageSegment(element, segmentTop, callback) {
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
+      var renderWidth = element.offsetWidth;
+      var renderHeight = window.innerHeight;
+
+      canvas.width = renderWidth;
+      canvas.height = renderHeight;
+      context.fillStyle = '#ffffff';
+      context.fillRect(0, 0, renderWidth, renderHeight);
+
+      html2canvas(element, {
+        logging: true,
+        x: 0,
+        y: segmentTop,
+        width: renderWidth,
+        height: renderHeight,
+        scrollY: -segmentTop,
+        onclone: function (doc) {
+          doc.body.style.backgroundColor = '#ffffff';
+        }
+      }).then(function (canvas) {
+        callback(canvas);
+      });
+    }
+
+    function captureEntirePage(element) {
+      var segmentTop = 0;
+      var segments = [];
+      var windowHeight = window.innerHeight;
+
+      function nextSegment() {
+        capturePageSegment(element, segmentTop, function (canvas) {
+          segments.push(canvas);
+          segmentTop += windowHeight;
+
+          // 检查是否还有内容未被渲染
+          var elementBottom = element.offsetTop + element.offsetHeight;
+          if (segmentTop < elementBottom) {
+            nextSegment();
+          } else {
+            // 所有段都已捕获，现在将它们合并到一个 PDF 中
+            combineSegmentsIntoPDF(segments);
+          }
+        });
+      }
+
+      nextSegment();
+    }
+
+    function combineSegmentsIntoPDF(segments) {
+      // 创建 PDF 实例
+      var pdf = new jspdf.jsPDF('landscape', 'pt', [800, 1200]);
+      var margin = 10;
+
+      segments.forEach(function (canvas, index) {
+        var imgData = canvas.toDataURL('image/png');
+        var pdfWidth = 800;
+        var pdfHeight = canvas.height * (pdfWidth / canvas.width);
+        pdf.addImage(imgData, 'PNG', margin, margin + (index * pdfHeight), pdfWidth - 2 * margin, pdfHeight - 2 * margin);
+      });
+
+      // 保存 PDF
+      pdf.save('gantt-table.pdf');
+    }
+
+    if (pathParts.indexOf("gantt") != -1) {
+      var link = document.querySelector('a.pdf');
+      link.removeAttribute("rel");
+      link.removeAttribute("href");
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        captureEntirePage(document.querySelector(".gantt-table"));
+      });
+    }
+
 
     // 修改主页链接
     var homeLink = document.querySelector('a.home');
