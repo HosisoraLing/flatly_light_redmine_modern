@@ -180,118 +180,34 @@
 
       });
     });
-//     if (pathParts.indexOf("gantt") != -1) {
-//
-//       var link = document.querySelector('a.pdf');
-//       link.removeAttribute("rel");
-//       link.removeAttribute("href");
-//       link.addEventListener('click', function (event){
-//
-//         html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
-//           var imgData = canvas.toDataURL('image/png');
-//           var margin = 10;
-//           // 获取画布的尺寸
-//           var canvasWidth = canvas.width;
-//           var canvasHeight = canvas.height;
-//           // 将像素转换为点
-//           var pdfWidth = canvasWidth / 1;
-//           var pdfHeight = canvasHeight / 1;
-//           // 创建 PDF 实例，方向设置为横向（landscape）
-//           var pdf = new window.jspdf.jsPDF('landscape', 'pt', [pdfWidth, pdfHeight]);
-//           // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
-//           pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
-//           // 保存 PDF
-//           pdf.save('gantt-table.pdf');
-//         });
-//       });
-//
-//     }
-
-
-    function capturePageSegment(element, segmentTop, callback) {
-      var canvas = document.createElement('canvas');
-      var context = canvas.getContext('2d');
-      var renderWidth = element.offsetWidth;
-      var renderHeight = window.innerHeight;
-
-      canvas.width = renderWidth;
-      canvas.height = renderHeight;
-      context.fillStyle = '#ffffff';
-      context.fillRect(0, 0, renderWidth, renderHeight);
-
-      html2canvas(element, {
-        logging: true,
-        x: 0,
-        y: segmentTop,
-        width: renderWidth,
-        height: renderHeight,
-        scrollY: -segmentTop,
-        onclone: function (doc) {
-          doc.body.style.backgroundColor = '#ffffff';
-        }
-      }).then(function (canvas) {
-        callback(canvas);
-      });
-    }
-
-    function captureEntirePage(element) {
-      var segmentTop = 0;
-      var segments = [];
-      var windowHeight = window.innerHeight;
-
-      function nextSegment() {
-        capturePageSegment(element, segmentTop, function (canvas) {
-          segments.push(canvas);
-          segmentTop += windowHeight;
-
-          // 检查是否还有内容未被渲染
-          var elementBottom = element.offsetTop + element.offsetHeight;
-          if (segmentTop < elementBottom) {
-            nextSegment();
-          } else {
-            // 所有段都已捕获，现在将它们合并到一个 PDF 中
-            combineSegmentsIntoPDF(segments);
-          }
-        });
-      }
-
-      nextSegment();
-    }
-
-    function combineSegmentsIntoPDF(segments) {
-      var pdf = new jspdf.jsPDF('landscape', 'pt', 'a4');
-      var margin = 10;
-      var yPos = margin;
-
-      segments.forEach(function (canvas, index) {
-        var imgData = canvas.toDataURL('image/png');
-        var pdfWidth = pdf.internal.pageSize.getWidth();
-        var pdfHeight = canvas.height * (pdfWidth / canvas.width);
-        var imgHeight = pdfHeight - 2 * margin;
-
-        if (yPos + imgHeight > pdf.internal.pageSize.getHeight()) {
-          pdf.addPage();
-          yPos = margin;
-        }
-
-        pdf.addImage(imgData, 'PNG', margin, yPos, pdfWidth - 2 * margin, imgHeight);
-        yPos += imgHeight + 10; // Add a small gap between segments
-      });
-
-      pdf.save('gantt-table.pdf');
-    }
-
-// Usage
-
     if (pathParts.indexOf("gantt") != -1) {
+
       var link = document.querySelector('a.pdf');
       link.removeAttribute("rel");
       link.removeAttribute("href");
-      link.addEventListener('click', function (event) {
-        event.preventDefault();
-        captureEntirePage(document.querySelector(".gantt-table"));
+      link.addEventListener('click', function (event){
+
+        html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
+          var imgData = canvas.toDataURL('image/png');
+          var margin = 10;
+          // 获取画布的尺寸
+          var canvasWidth = canvas.width;
+          var canvasHeight = canvas.height;
+          // 将像素转换为点
+          var pdfWidth = canvasWidth / 1;
+          var pdfHeight = canvasHeight / 1;
+          // 创建 PDF 实例，方向设置为横向（landscape）
+          var pdf = new window.jspdf.jsPDF('landscape', 'pt', [pdfWidth, pdfHeight]);
+          // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
+          pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
+          // 保存 PDF
+          pdf.save('gantt-table.pdf');
+        });
       });
+
     }
+
+
 
 
     // 修改主页链接
