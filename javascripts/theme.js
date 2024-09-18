@@ -200,9 +200,10 @@
           // 计算PDF页面的宽度和高度
           var pdfWidth = canvasWidth + 2 * margin;
           var pdfHeight = canvasHeight + 2 * margin;
-          var pageHeight = canvasWidth * 0.65;
+          var pageHeight = canvasWidth * 0.60;
           var heightLeft = canvasHeight;
           var position = margin;
+          var pageIndex =0;
           // 如果甘特图只能填满一页，就塞到一页里面
           if (canvasHeight <= pageHeight) {
             // 创建 PDF 实例
@@ -219,12 +220,13 @@
             // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
             pdf.addImage(imgData, 'PNG', margin, position, pdfWidth - 2 * margin, pageHeight - 2 * margin );
             heightLeft -= pageHeight;
-
+            pageIndex++;
             while (heightLeft >= 0) {
-              position += heightLeft - canvasHeight; // top padding for other pages
+              position = pageIndex * pageHeight * -1 + 10;
               pdf.addPage();
               pdf.addImage(imgData, 'PNG', margin, position, pdfWidth - 2 * margin, pageHeight  + 2 * margin);
               heightLeft -= pageHeight;
+              pageIndex++;
             }
             // 保存 PDF
             pdf.save('gantt-table.pdf');
