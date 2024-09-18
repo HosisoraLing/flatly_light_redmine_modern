@@ -207,6 +207,7 @@
           if (canvasWidth <= pageHeight) {
             // 创建 PDF 实例
             var pdf = new window.jspdf.jsPDF('', 'pt',[pdfWidth, pageHeight + 2 * margin]);
+            pdf.addPage();
             // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
             pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin );
             // 保存 PDF
