@@ -217,7 +217,7 @@
             var pdf = new window.jspdf.jsPDF('l', 'pt',[pdfWidth, pageHeight + 2 * margin]);
 
             // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
-            pdf.addImage(imgData, 'PNG', margin, position, pdfWidth - 2 * margin, pdfHeight - 2 * margin );
+            pdf.addImage(imgData, 'PNG', margin, position, pdfWidth - 2 * margin, pageHeight - 2 * margin );
             heightLeft -= pageHeight;
 
             while (heightLeft >= 0) {
