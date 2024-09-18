@@ -223,7 +223,7 @@
             while (heightLeft >= 0) {
               position += heightLeft - canvasHeight; // top padding for other pages
               pdf.addPage();
-              pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+              pdf.addImage(imgData, 'PNG', 0, position, pdfWidth - 2 * margin, pageHeight  + 2 * margin);
               heightLeft -= pageHeight;
             }
             // 保存 PDF
