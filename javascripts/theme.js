@@ -200,7 +200,7 @@
           // 计算PDF页面的宽度和高度
           var pdfWidth = canvasWidth + 2 * margin;
           var pdfHeight = canvasHeight + 2 * margin;
-          var pageHeight = canvasWidth * 0.7;
+          var pageHeight = canvasWidth * 0.65;
           var heightLeft = canvasHeight;
           var position = margin;
           // 如果甘特图只能填满一页，就塞到一页里面
