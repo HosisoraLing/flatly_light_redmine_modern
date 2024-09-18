@@ -200,7 +200,7 @@
           // 计算PDF页面的宽度和高度
           var pdfWidth = canvasWidth + 2 * margin;
           var pdfHeight = canvasHeight + 2 * margin;
-          var pageHeight = canvasWidth * 0.60;
+          var pageHeight = canvasWidth * 0.7;
           var heightLeft = canvasHeight;
           var position = margin;
           var pageIndex =0;
