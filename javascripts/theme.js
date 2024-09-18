@@ -175,11 +175,12 @@
         // 两个库都加载完成后的回调函数
         console.log('html2canvas and jsPDF are loaded.');
 
-        // 现在可以使用 html2canvas 和 jsPDF
-        document.querySelector(".gantt-table").style.border = "1px solid #000"; // 举例：给表格添加边框以便在html2canvas中显示
 
       });
     });
+
+    //切分成A4的实现
+
     if (pathParts.indexOf("gantt") != -1) {
 
       var link = document.querySelector('a.pdf');
@@ -199,16 +200,56 @@
           // 计算PDF页面的宽度和高度
           var pdfWidth = canvasWidth + 2 * margin;
           var pdfHeight = canvasHeight + 2 * margin;
-          // 创建 PDF 实例
-          var pdf = new window.jspdf.jsPDF('', 'pt', [pdfWidth, pdfHeight]);
-          // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
-          pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
-          // 保存 PDF
-          pdf.save('gantt-table.pdf');
+          var pageHeight = canvasWidth * 1.4;
+          var heightLeft = canvasHeight;
+          var position = margin;
+          // 如果甘特图只能填满一页，就塞到一页里面
+          if (canvasWidth <= pageHeight) {
+            // 创建 PDF 实例
+            var pdf = new window.jspdf.jsPDF('', 'pt',"a4");
+            // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
+            pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin );
+            pdf.addPage()
+            // 保存 PDF
+            pdf.save('gantt-table.pdf');
+          }
+
         });
       });
 
     }
+
+    //切整页的实现
+
+    // if (pathParts.indexOf("gantt") != -1) {
+    //
+    //   var link = document.querySelector('a.pdf');
+    //   link.removeAttribute("rel");
+    //   link.removeAttribute("href");
+    //   link.addEventListener('click', function (event){
+    //
+    //     html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
+    //       var imgData = canvas.toDataURL('image/png');
+    //
+    //       var canvasWidth = canvas.width;
+    //       var canvasHeight = canvas.height;
+    //
+    //       // 定义边距
+    //       var margin = 10;
+    //
+    //       // 计算PDF页面的宽度和高度
+    //       var pdfWidth = canvasWidth + 2 * margin;
+    //       var pdfHeight = canvasHeight + 2 * margin;
+    //       // 创建 PDF 实例
+    //       var pdf = new window.jspdf.jsPDF('', 'pt', [pdfWidth, pdfHeight]);
+    //       // 添加图像到 PDF，宽度和高度设置为 PDF 页面的宽度和高度减去边距
+    //       pdf.addImage(imgData, 'PNG', margin, margin, pdfWidth - 2 * margin, pdfHeight - 2 * margin);
+    //       // 保存 PDF
+    //       pdf.save('gantt-table.pdf');
+    //     });
+    //   });
+    //
+    // }
 
 
 
