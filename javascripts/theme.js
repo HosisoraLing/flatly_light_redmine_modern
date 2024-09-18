@@ -204,7 +204,7 @@
           var heightLeft = canvasHeight;
           var position = margin;
           // 如果甘特图只能填满一页，就塞到一页里面
-          if (canvasWidth <= pageHeight) {
+          if (canvasHeight <= pageHeight) {
             // 创建 PDF 实例
             var pdf = new window.jspdf.jsPDF('', 'pt',[pdfWidth, pageHeight + 2 * margin]);
 
