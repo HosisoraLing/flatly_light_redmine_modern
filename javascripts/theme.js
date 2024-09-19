@@ -228,8 +228,10 @@
 // 假设页面大小为 A4，你可以根据实际情况调整
               pdf.rect(0, 0, pdfWidth, pageHeight+2*margin, 'F');
               pdf.addImage(imgData1, 'PNG', margin, margin, pdfWidth - 2 * margin, pageHeight);
-              pdf.addPage();
               heightLeft -= pageHeight;
+              if (heightLeft > 0) {
+                pdf.addPage();
+            }
             }
             // 保存 PDF
             pdf.save('gantt-table.pdf');
