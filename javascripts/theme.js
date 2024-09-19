@@ -216,9 +216,10 @@
             // 保存 PDF
             pdf.save('gantt-table.pdf');
           }else{
+            var context = canvas.getContext('2d');
             var pdf = new window.jspdf.jsPDF('l', 'pt',[pdfWidth, pageHeight + 2 * margin]);
             while (heightLeft >= 0) {
-              var imgData1 = canvas.getImageData(0,position,canvasWidth,pageHeight);
+              var imgData1 = context.getImageData(0,position,canvasWidth,pageHeight);
               position = position + pageHeight;
 
               pdf.addImage(imgData1, 'PNG', margin, margin, pdfWidth - 2 * margin, pageHeight);
