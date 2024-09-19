@@ -189,7 +189,7 @@
       link.addEventListener('click', function (event){
 
         html2canvas(document.querySelector(".gantt-table")).then(function(canvas) {
-          var imgData = canvas.toDataURL('image/png');
+
 
           var canvasWidth = canvas.width;
           var canvasHeight = canvas.height;
@@ -206,6 +206,7 @@
 
           // 如果甘特图只能填满一页，就塞到一页里面
           if (canvasHeight <= pageHeight) {
+            var imgData = canvas.toDataURL('image/png');
             // 创建 PDF 实例
             var pdf = new window.jspdf.jsPDF('l', 'pt',[pdfWidth, pageHeight + 2 * margin]);
 
@@ -218,7 +219,7 @@
             var pdf = new window.jspdf.jsPDF('l', 'pt',[pdfWidth, pageHeight + 2 * margin]);
             while (heightLeft >= 0) {
               var imgData1 = canvas.getImageData(0,position,canvasWidth,pageHeight);
-              position = position +pageHeight;
+              position = position + pageHeight;
 
               pdf.addImage(imgData1, 'PNG', margin, margin, pdfWidth - 2 * margin, pageHeight);
               pdf.addPage();
