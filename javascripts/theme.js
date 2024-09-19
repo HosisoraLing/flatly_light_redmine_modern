@@ -226,9 +226,7 @@
 
 // 添加内容之前，绘制一个覆盖整个页面的白色矩形
 // 假设页面大小为 A4，你可以根据实际情况调整
-              var pageWidth = pdf.internal.pageSize.getWidth();
-              var pageHeight = pdf.internal.pageSize.getHeight();
-              pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+              pdf.rect(0, 0, pdfWidth, pageHeight+2*margin, 'F');
               pdf.addImage(imgData1, 'PNG', margin, margin, pdfWidth - 2 * margin, pageHeight);
               pdf.addPage();
               heightLeft -= pageHeight;
