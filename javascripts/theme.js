@@ -219,15 +219,15 @@
             var context = canvas.getContext('2d');
             var pdf = new window.jspdf.jsPDF('l', 'pt',[pdfWidth, pageHeight + 2 * margin]);
             while (heightLeft >= 0) {
-              var imgData1 = context.getImageData(0,position,canvasWidth,pageHeight);
-              position = position + pageHeight;
-// 设置页面背景色为白色
-              pdf.setFillColor(255, 255, 255); // RGB颜色，白色
+              if (heightLeft >= pageHeight) {
+                var imgData1 = context.getImageData(0,position,canvasWidth,pageHeight);
+                pdf.addImage(imgData1, 'PNG', margin, margin, pdfWidth - 2 * margin, pageHeight);
+              }else{
+                var imgData1 = context.getImageData(0,position,canvasWidth,heightLeft);
+                pdf.addImage(imgData1, 'PNG', margin, margin, pdfWidth - 2 * margin, heightLeft);
+              }
 
-// 添加内容之前，绘制一个覆盖整个页面的白色矩形
-// 假设页面大小为 A4，你可以根据实际情况调整
-              pdf.rect(0, 0, pdfWidth, pageHeight+2*margin, 'F');
-              pdf.addImage(imgData1, 'PNG', margin, margin, pdfWidth - 2 * margin, pageHeight);
+              position = position + pageHeight;
               heightLeft -= pageHeight;
               if (heightLeft > 0) {
                 pdf.addPage();
